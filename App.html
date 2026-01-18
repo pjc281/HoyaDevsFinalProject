@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GUAttendance</title>
+    <link rel="stylesheet" href="App.css">
+</head>
+<body>
+    <div class="App">
+        <header class="App-header">
+            <h1><img src="logo.png" alt="Georgetown Logo" style="height: 1em; vertical-align: middle;"> GUAttendance</h1>
+        </header>
+        <main>
+            <!-- Dashboard View -->
+            <div id="view-dashboard" class="view-container">
+                <h2>My Classes</h2>
+                <form id="add-class-form" class="add-form">
+                    <input type="text" id="new-class-name" placeholder="Enter Class Name (e.g., COSC-1010)" required>
+                    <button type="submit">Create Class</button>
+                </form>
+                <div id="class-grid" class="class-grid"></div>
+                <p id="no-classes-msg" class="empty-state">No classes yet. Create one above!</p>
+            </div>
+
+            <!-- Class Detail View -->
+            <div id="view-class" class="view-container" style="display: none;">
+                <div class="header-row">
+                    <button class="back-btn" id="back-to-dashboard">&larr; Back</button>
+                    <h2 id="active-class-name"></h2>
+                </div>
+                <div class="actions-row">
+                    <button class="primary-btn" id="btn-take-attendance">Take Attendance</button>
+                    <button class="secondary-btn" id="btn-view-history">View History</button>
+                </div>
+                <div class="section">
+                    <h3>Add Student</h3>
+                    <form id="add-student-form" class="add-form inline-form">
+                        <input type="text" id="new-student-name" placeholder="Name (Required)" required>
+                        <input type="text" id="new-student-id" placeholder="NetID (Optional)">
+                        <input type="email" id="new-student-email" placeholder="Email (Optional)">
+                        <button type="submit">Add</button>
+                    </form>
+                </div>
+                <div class="section">
+                    <h3>Roster</h3>
+                    <div id="roster-container"></div>
+                </div>
+            </div>
+
+            <!-- Take Attendance View -->
+            <div id="view-take-attendance" class="view-container" style="display: none;">
+                <div class="header-row">
+                    <button class="back-btn" id="cancel-attendance">Cancel</button>
+                    <h2 id="attendance-class-name"></h2>
+                </div>
+                <div class="control-row">
+                    <label>Date: </label>
+                    <input type="date" id="attendance-date">
+                </div>
+                <div id="attendance-list" class="attendance-list"></div>
+                <button class="save-btn" id="save-attendance">Save Attendance</button>
+            </div>
+
+            <!-- History View -->
+            <div id="view-history" class="view-container" style="display: none;">
+                <div class="header-row">
+                    <button class="back-btn" id="back-from-history">&larr; Back</button>
+                    <h2>Attendance History: <span id="history-class-name"></span></h2>
+                </div>
+                
+                <div class="history-layout">
+                <div class="calendar-container">
+                    <div class="calendar-controls">
+                        <button id="prev-month" class="secondary-btn">&lt;</button>
+                        <h3 id="calendar-month-year" style="margin: 0;"></h3>
+                        <button id="next-month" class="secondary-btn">&gt;</button>
+                    </div>
+                    <div class="calendar-weekdays">
+                        <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+                    </div>
+                    <div id="calendar-grid" class="calendar-grid"></div>
+                </div>
+
+                <div id="history-details" class="history-details"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="App.js"></script>
+</body>
+</html>
